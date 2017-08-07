@@ -15,3 +15,8 @@ As of now, the easiest way to install would be to clone this repo and
 link the module folder in your project's file hierarchy.
 
 A more standard way (setup.py) is coming.
+
+## Conventions
+
+I tried to follow Mezzanine's approach to app design, so syntax and
+architecture closely resembles their blog app.
