@@ -39,11 +39,25 @@ class Game(AbsoluteURLFromSlugMixin, Displayable, RichText, AdminThumbMixin):
                                related_name="edited_games")
 
     genres = models.ManyToManyField("GameGenre",
-                                    verbose_name=_("Genre"),
+                                    verbose_name=_("Genre(s)"),
                                     blank=True,
                                     related_name="related_games")
 
     url_name = "game-detail"
+
+
+class GameRelease(models.Model):
+    """
+    Represents a game release by his date and a short informative text
+    """
+
+    # It makes sense to have the release pointing to the game
+    # as a single release won't ever be used for two different games
+    game = models.ForeignKey("Game",
+                             related_name="releases")
+
+    date = models.DateField()
+    info = models.CharField(max_length=256)
 
 
 class GameDevelopper(Slugged, AbsoluteURLFromSlugMixin):
