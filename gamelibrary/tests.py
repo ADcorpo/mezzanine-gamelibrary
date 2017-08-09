@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 from gamelibrary.models import (Game,
+                                GameRelease,
                                 GameDevelopper,
                                 GameEditor,
                                 GameGenre)
@@ -12,7 +13,7 @@ class GameModelTests(TestCase):
         """
         Test model's get_absolute_url for correctness
         """
-        
+
         game = Game(title="Test Game")
         game.save()
 
@@ -20,6 +21,20 @@ class GameModelTests(TestCase):
                                kwargs={"slug": game.slug})
 
         self.assertEqual(expected_url, game.get_absolute_url())
+
+
+class GameReleaseModelTests(TestCase):
+    def setUp(self):
+        self.game = Game(title="Tooth and Tail")
+        self.game.save()
+
+    def test_str_cast(self):
+        release = GameRelease(game=self.game,
+                              date="2017-08-10",
+                              info="Demo release")
+        expected_str = "2017-08-10 Tooth and Tail"
+
+        self.assertEqual(expected_str, str(release))
 
 
 class GameDevelopperModelTests(TestCase):
