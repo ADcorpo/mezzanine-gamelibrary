@@ -2,9 +2,9 @@ from django.test import TestCase
 from django.urls import reverse
 
 from gamelibrary.models import (Game,
-                     GameDevelopper,
-                     GameEditor,
-                     GameGenre)
+                                GameDevelopper,
+                                GameEditor,
+                                GameGenre)
 
 
 class GameModelTests(TestCase):
