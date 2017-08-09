@@ -59,6 +59,9 @@ class GameRelease(models.Model):
     date = models.DateField()
     info = models.CharField(max_length=256)
 
+    def __str__(self):
+        return str(self.date) + " " + self.game.title
+
 
 class GameDevelopper(Slugged, AbsoluteURLFromSlugMixin):
     """
