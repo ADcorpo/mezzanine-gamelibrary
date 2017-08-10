@@ -14,6 +14,7 @@ from gamelibrary.models import (Game,
 
 
 game_fieldsets = deepcopy(DisplayableAdmin.fieldsets)
+game_fieldsets[0][1]["fields"].insert(1, "cover")
 game_fieldsets[0][1]["fields"].insert(1, "editor")
 game_fieldsets[0][1]["fields"].insert(1, "developper")
 game_fieldsets[0][1]["fields"].insert(1, "genres")
